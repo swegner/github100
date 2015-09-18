@@ -227,6 +227,90 @@
       </div>
 
 
+      <h1>Forms!</h1>
+      <form>
+        <div class="form-group">
+          <label for="myInput">Give me yo info!</label>
+          <input class="form-control" id="myInput" placeholder="SSN: 123-45-6789">
+          <p class="help-block">
+            Don't worry, your info is safe with us.
+          </p>
+        </div>
+        <div class="form-group">
+          <label for="stealingPassword">Give me yo password!</label>
+          <input type="password" class="form-control" id="stealingPassword" aria-describedby="passwordHelpBlock" placeholder="password123">
+          <span id="passwordHelpBlock" class="help-block">All passwords must replace S with $</span>
+        </div>
+        <div class="form-group">
+          <label for="cashMoney">Give me yo money!</label>
+          <div class="input-group">
+            <div class="input-group-addon">$</div>
+            <input type="text" class="form-control" id="cashMoney" placeholder="100">
+            <div class="input-group-addon">.00</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fileUpload">Give me yo files!</label>
+          <input type="file" id="fileUpload">
+        </div>
+        <div class="form-group">
+          <label for="stealTime">When should I steal all the things?</label>
+          <input type="time" id="stealTime" class="form-control">
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadio" id="option1" value="option1" checked>
+            This is going to be awesome.
+          </label>
+          <label>
+            <input type="radio" name="optionsRadio" id="option2" value="option2">
+            This is going to be super-awesome.
+          </label>
+          <label>
+            <input type="radio" name="optionsRadio" id="option3" value="option3" disabled>
+            This is going to be horrible.
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="lastWords">Any last words?</label>
+          <textarea class="form-control" row="2" placeholder="Make it quick!"></textarea>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox"> I agree to everything!</label>
+        </div>
+        <button type="submit" class="btn btn-default">Do it!</button>
+      </form>
+
+
+      <h2>Inline form!</h2>
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="inlineName">Name</label>
+          <input class="form-control" id="inlineName" placeholder="Name">
+        </div>
+        <div class="form-group">
+          <label for="inlineEmail">Email</label>
+          <input type="email" class="form-control" id="inlineEmail" placeholder="someone@gmail.com">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <h2>Grid form!</h2>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="name3" class="control-label col-xs-3">Name</label>
+          <div class="col-xs-9">
+            <input type="text" class="form-control" id="name3" placeholder="John Doe">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email3" class="control-label col-xs-3">Email</label>
+          <div class="col-xs-6">
+            <input type="email" class="form-control" id="email3" placeholder="john.doe@gmail.com">
+          </div>
+        </div>
+      </form>
+
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
