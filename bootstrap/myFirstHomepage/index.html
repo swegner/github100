@@ -602,6 +602,11 @@
       <h1>Tooltips!</h1>
       <button type="button" class="btn btn-default" data-trigger="click" data-toggle="tooltip" data-placement="top" title="yo!">Submit</button>
       <button type="button" class="btn btn-default" data-delay="500" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+
+
+      <h1>Popovers!</h1>
+      <button type="button" class="btn btn-default" data-toggle="popover" title="My first Popover" data-content="Hey, check me out!">Engage!</button>
+      <a role="button" class="btn btn-lg btn-info" tabindex="0" data-toggle="popover" data-trigger="focus" title="Heyo!" data-content="This can be dismissed by clicking anywhere on the page">Popover#2</a>
     </div>
 
 
@@ -630,5 +635,6 @@
 
     <!-- Tooltips! -->
     <script>$(function() { $('[data-toggle="tooltip"]').tooltip() })</script>
+    <script>$(function() { $('[data-toggle="popover"]').popover() })</script>
   </body>
 </html>
