@@ -582,6 +582,21 @@
 
       <h1>Modals!</h1>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Launch!</button>
+
+      <h1>Togglable Tabs!</h1>
+      <div>
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#tab1" role="tab" data-toggle="tab">Tab 1</a></li>
+          <li role="presentation"><a href="#tab2" role="tab" data-toggle="tab">Tab 2</a></li>
+          <li role="presentation"><a href="#tab3" role="tab" data-toggle="tab">Tab 3</a></li>
+        </ul>
+      </div>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="tab1">This is my tab1 content!</div>
+        <div role="tabpanel" class="tab-pane fade" id="tab2">This is my tab2 content!</div>
+        <div role="tabpanel" class="tab-pane fade" id="tab3">This is my tab3 content!</div>
+      </div>
     </div>
 
 
