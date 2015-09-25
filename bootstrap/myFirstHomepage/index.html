@@ -597,6 +597,11 @@
         <div role="tabpanel" class="tab-pane fade" id="tab2">This is my tab2 content!</div>
         <div role="tabpanel" class="tab-pane fade" id="tab3">This is my tab3 content!</div>
       </div>
+
+
+      <h1>Tooltips!</h1>
+      <button type="button" class="btn btn-default" data-trigger="click" data-toggle="tooltip" data-placement="top" title="yo!">Submit</button>
+      <button type="button" class="btn btn-default" data-delay="500" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
     </div>
 
 
@@ -622,5 +627,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Tooltips! -->
+    <script>$(function() { $('[data-toggle="tooltip"]').tooltip() })</script>
   </body>
 </html>
