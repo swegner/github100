@@ -622,6 +622,44 @@
       <h1>Popovers!</h1>
       <button type="button" class="btn btn-default" data-toggle="popover" title="My first Popover" data-content="Hey, check me out!">Engage!</button>
       <a role="button" class="btn btn-lg btn-info" tabindex="0" data-toggle="popover" data-trigger="focus" title="Heyo!" data-content="This can be dismissed by clicking anywhere on the page">Popover#2</a>
+
+      <h1>Collapse!</h1>
+      <a role="button" class="btn btn-primary" data-toggle="collapse" href="#collapsableContent1">Click me</a>
+      <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#collapsableContent2">Or me</button>
+      <div id="collapsableContent1">Hi there!
+      </div>
+
+
+      <h1>Carousel!</h1>
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="sailboat.png">
+            <div class="carousel-caption">Sailing on the Atlantic!</div>
+          </div>
+          <div class="item">
+            <img src="sailboat.png">
+            <div class="carousel-caption">Sailing on the Pacific!</div>
+          </div>
+          <div class="item">
+            <img src="sailboat.png">
+            <div class="carousel-caption">Sailing on the Mediterranean!</div>
+          </div>
+        </div>
+
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
     </div>
 
 
