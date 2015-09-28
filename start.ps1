@@ -14,7 +14,7 @@ function queryTopProjects {
   $lastUpdatedFilter = [TimeSpan]::FromDays(365)
   $urlFormat = 'https://api.github.com/search/repositories?q=pushed:>{0}&sort=stars&per_page={1}'
 
-  $githubUrl = $urlFormat -f ([DateTime]::Today - $lastUpdatedFilter).ToString('yyyy-dd-MM'), $targetNumProjects
+  $githubUrl = $urlFormat -f ([DateTime]::Today - $lastUpdatedFilter).ToString('yyyy-MM-dd'), $targetNumProjects
   $rawResults = Invoke-RestMethod -Uri $githubUrl
   $rawProjects = $rawResults.items
 
