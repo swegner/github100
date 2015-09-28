@@ -42,8 +42,7 @@ function testHasSample($project) {
 }
 
 function outputSummary($projects) {
-  # TODO: Write output logic
-  $projects
+  $projects | Format-Table Name, Stars, Url
 }
 
 
