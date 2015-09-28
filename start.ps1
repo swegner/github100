@@ -31,8 +31,14 @@ function queryTopProjects {
 }
 
 filter filterProjectsWithoutSsamples {
-  # TODO: Write filtering
-  $_
+  if (-not (testHasSample $_)) {
+    $_
+  }
+}
+
+function testHasSample($project) {
+  $expectedProjectPath = Join-Path $PWD $project.Name
+  Test-Path $expectedProjectPath
 }
 
 function outputSummary($projects) {
