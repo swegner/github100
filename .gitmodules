@@ -1,0 +1,3 @@
+[submodule "angular.js/angular-phonecat"]
+	path = angular.js/angular-phonecat
+	url = https://github.com/angular/angular-phonecat.git
