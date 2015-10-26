@@ -7,6 +7,9 @@ function build() {
   jshint.cmd app.js
   if ($LastExitCode -ne 0) { return }
 
+  csslint.cmd style.css
+  if ($LastExitCode -ne 0) { return }
+
   .\index.html
 }
 
