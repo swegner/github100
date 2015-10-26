@@ -2,8 +2,8 @@
 
 (function ($, d3) {
   $(document).ready(function() {
-    var body = d3.select("body");
-    var div = body.append("div");
+    var section = d3.selectAll("section");
+    var div = section.append("div");
     div.html("Hello, world!");
   });
 })(jQuery, d3);
