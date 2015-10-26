@@ -1,6 +1,8 @@
 // Tutorial: http://bost.ocks.org/mike/bar/
 
 (function ($, d3) {
+  "use strict";
+  
   $(document).ready(function() {
 
     d3.selectAll("section")
