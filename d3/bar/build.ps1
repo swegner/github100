@@ -10,7 +10,8 @@ function build() {
   csslint.cmd style.css
   if ($LastExitCode -ne 0) { return }
 
-  .\index.html
+  Start-Process 'cmd.exe' '/c', 'http-server.cmd'
+  Start-Process 'http://localhost:8080'
 }
 
 build

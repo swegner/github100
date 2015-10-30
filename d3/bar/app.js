@@ -5,9 +5,6 @@
 
   $(document).ready(function() {
 
-    var data = [ 4, 3, 2, 10, 5, 7, 9 ];
-
-
     // Selections!
     d3.selectAll("section")
       .append("div")
@@ -15,42 +12,50 @@
         .style("background-color", "black")
         .html("Hello, world!");
 
+    var chartWidth = 500;
 
-    // Generated Bar Chart
-    var scaleWidth = 500;
-    var scale = d3.scale.linear()
-      .domain([0, d3.max(data)])
-      .range([0, scaleWidth]);
+    var generatedBarChart = d3.select("#generatedBarChart")
+      .attr("width", chartWidth);
 
-    d3.select("#generatedBarChart")
-      .selectAll("div")
-        .data(data)
-      .enter().append("div")
-        .style("width", function(d) { return scale(d) + "px"; })
-        .text(function(d) { return d; });
+    var svgBarChart = d3.select("#generatedSvgBarChart")
+      .attr("width", chartWidth);
+
+    d3.tsv("dataset.tsv",
+      function(d) { d.value = +d.value; return d; },
+      function(error, data) {
+
+      // Generated Bar Chart
+      var scale = d3.scale.linear()
+        .domain([0, d3.max(data, function(d) { return d.value; })])
+        .range([0, chartWidth]);
+
+      generatedBarChart
+        .selectAll("div")
+          .data(data)
+        .enter().append("div")
+          .style("width", function(d) { return scale(d.value) + "px"; })
+          .text(function(d) { return d.value; });
 
 
-    // Generated SVG Bar Chart
-    var barheight = 20;
+      // Generated SVG Bar Chart
+      var barheight = 20;
 
-    var svgBarSelect = d3.select("#generatedSvgBarChart")
-      .append("svg")
-        .attr("class", "chart")
-        .attr("width", scaleWidth)
+      var svgBarSelect = svgBarChart
         .attr("height", barheight * data.length)
         .selectAll("g")
           .data(data)
         .enter().append("g")
           .attr("transform", function(d, i) { return "translate(0," + barheight * i + ")"; });
 
-    svgBarSelect.append("rect")
-      .attr("height", barheight - 1)
-      .attr("width", scale);
+      svgBarSelect.append("rect")
+        .attr("height", barheight - 1)
+        .attr("width", function(d) { return scale(d.value); });
 
-    svgBarSelect.append("text")
-      .attr("y", (barheight - 1) / 2)
-      .attr("dy", ".35em")
-      .attr("x", function(d) { return scale(d) - 3; })
-      .text(function(d) { return d; });
-  });
-})(jQuery, d3);
+      svgBarSelect.append("text")
+        .attr("y", (barheight - 1) / 2)
+        .attr("dy", ".35em")
+        .attr("x", function(d) { return scale(d.value) - 3; })
+        .text(function(d) { return d.value; });
+      });
+    });
+  })(jQuery, d3);
