@@ -22,6 +22,7 @@
       .attr("width", chartWidth);
 
     var svgColumnChart = d3.select("#generatedSvgColumnChart")
+      .attr("width", chartWidth)
       .attr("height", chartHeight);
 
     d3.tsv("dataset.tsv",
@@ -30,6 +31,7 @@
 
       // Generated Bar Chart
       var maxDataVal = d3.max(data, function(d) { return d.value; });
+
       var horizontalScale = d3.scale.linear()
         .domain([0, maxDataVal])
         .range([0, chartWidth]);
@@ -67,23 +69,24 @@
         .text(function(d) { return d.value; });
 
 
-        // Generated SVG Column chart
-        var barWidth = 20;
+      // Generated SVG Column chart
+      var labelScale = d3.scale.ordinal()
+        .domain(data.map(function(d) { return d.name; }))
+        .rangeRoundBands([0, chartWidth], 0.1);
 
-        var svgColSelect = svgColumnChart
-          .attr("width", barWidth * data.length)
+      var svgColSelect = svgColumnChart
           .selectAll("g")
             .data(data)
           .enter().append("g")
-            .attr("transform", function(d, i) { return "translate(" + (i * barWidth) + ",0)"; });
+            .attr("transform", function(d, i) { return "translate(" + labelScale(d.name) + ",0)"; });
 
         svgColSelect.append("rect")
           .attr("y", function(d) { return verticalScale(d.value); })
-          .attr("width", barWidth - 1)
+          .attr("width", labelScale.rangeBand())
           .attr("height", function(d) { return chartHeight - verticalScale(d.value); });
 
         svgColSelect.append("text")
-          .attr("x", (barWidth) / 2)
+          .attr("x", labelScale.rangeBand() / 2)
           .attr("dy", ".75em")
           .attr("y", function(d) { return verticalScale(d.value) + 3; })
           .text(function(d) { return d.value; });
