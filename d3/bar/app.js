@@ -12,18 +12,27 @@
         .style("background-color", "black")
         .html("Hello, world!");
 
-    var chartWidth = 500;
-    var chartHeight = 300;
+    var margin = {
+      top: 15,
+      left: 20,
+      right: 20,
+      bottom: 15,
+    };
+
+    var outerWidth = 500;
+    var outerHeight = 300;
+
+    var chartWidth = outerWidth - margin.left - margin.right;
+    var chartHeight = outerHeight - margin.top - margin.bottom;
 
     var generatedBarChart = d3.select("#generatedBarChart")
       .attr("width", chartWidth);
 
-    var svgBarChart = d3.select("#generatedSvgBarChart")
-      .attr("width", chartWidth);
-
     var svgColumnChart = d3.select("#generatedSvgColumnChart")
-      .attr("width", chartWidth)
-      .attr("height", chartHeight);
+        .attr("width", outerWidth)
+        .attr("height", outerHeight)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     d3.tsv("dataset.tsv",
       function(d) { d.value = +d.value; return d; },
@@ -46,27 +55,6 @@
         .enter().append("div")
           .style("width", function(d) { return horizontalScale(d.value) + "px"; })
           .text(function(d) { return d.value; });
-
-
-      // Generated SVG Bar Chart
-      var barheight = 20;
-
-      var svgBarSelect = svgBarChart
-        .attr("height", barheight * data.length)
-        .selectAll("g")
-          .data(data)
-        .enter().append("g")
-          .attr("transform", function(d, i) { return "translate(0," + barheight * i + ")"; });
-
-      svgBarSelect.append("rect")
-        .attr("height", barheight - 1)
-        .attr("width", function(d) { return horizontalScale(d.value); });
-
-      svgBarSelect.append("text")
-        .attr("y", (barheight - 1) / 2)
-        .attr("dy", ".35em")
-        .attr("x", function(d) { return horizontalScale(d.value) - 3; })
-        .text(function(d) { return d.value; });
 
 
       // Generated SVG Column chart
