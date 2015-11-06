@@ -5,5 +5,6 @@
   var circles = d3.selectAll("circle");
   circles
     .style("fill", "steelblue")
-    .attr("r", 30);
+    .attr("r", 30)
+    .attr("cx", function() { return Math.random() * 720; });
 })(d3);
