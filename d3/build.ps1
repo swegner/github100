@@ -15,7 +15,7 @@ function build() {
   }
 
   Start-Process 'cmd.exe' '/c', 'http-server.cmd'
-  Start-Process 'http://localhost:8080/circles/index.html'
+  Start-Process 'http://localhost:8080/join/index.html'
 }
 
 build
