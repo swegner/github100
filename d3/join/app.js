@@ -49,12 +49,18 @@ app = (function(d3, window) {
       .data(data);
 
     circles.enter().append("circle");
-    circles.exit().remove();
+
+    circles.exit()
+      .transition()
+        .attr("r", 0)
+        .remove();
 
     circles
-        .attr("r", function(d) { return rScale(d.radius); })
         .attr("cx", function(d) { return xScale(d.x); })
-        .attr("cy", function(d) { return yScale(d.y); });
+        .attr("cy", function(d) { return yScale(d.y); })
+        .attr("r", 0)
+      .transition()
+        .attr("r", function(d) { return rScale(d.radius); });
   }
 
   return {
