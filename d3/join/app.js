@@ -2,20 +2,59 @@
 
 app = (function(d3, window) {
 
-  var chartWidth = 700;
-  var chartHeight = 500;
+  var options = {
+    "chartWidth": 700,
+    "chartHeight": 500,
+    "maxRadius": 10,
+    "maxElements": 50
+  };
 
-  var svg = d3.select("#join-demo");
-  svg
-    .attr("width", chartWidth)
-    .attr("height", chartHeight)
-    .append("circle")
-      .attr("r", 5)
-      .attr("cx", 50)
-      .attr("cy", 50);
+  var rScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, options.maxRadius]);
+
+  var xScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, options.chartWidth]);
+
+  var yScale = d3.scale.linear()
+    .domain([0, 1])
+    .range([0, options.chartHeight]);
+
+  var svg = d3
+    .select("#join-demo")
+    .attr("width", options.chartWidth)
+    .attr("height", options.chartHeight);
+
+  function generateData() {
+
+    var numElements = Math.floor(options.maxElements * Math.random());
+    var data = [];
+    for (var i = 0; i < numElements; i++) {
+      data[i] = {
+        "radius": Math.random(),
+        "x": Math.random(),
+        "y": Math.random()
+      };
+    }
+
+    console.log("generated " + numElements + " data points");
+    return data;
+  }
 
   function renderCircles() {
-    window.alert('rendering!');
+    data = generateData();
+
+    var circles = svg.selectAll("circle")
+      .data(data);
+
+    circles.enter().append("circle");
+    circles.exit().remove();
+
+    circles
+        .attr("r", function(d) { return rScale(d.radius); })
+        .attr("cx", function(d) { return xScale(d.x); })
+        .attr("cy", function(d) { return yScale(d.y); });
   }
 
   return {
