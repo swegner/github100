@@ -46,4 +46,4 @@ function outputSummary($projects) {
 }
 
 
-main
+main | more
