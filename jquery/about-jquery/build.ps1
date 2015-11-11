@@ -4,13 +4,14 @@ function build() {
   htmlhint.cmd
   if ($LastExitCode -ne 0)  { return }
 
-  dir -Recurse *.js |% {
-    jshint.cmd $_.FullName
+  $jsInputs = dir -Recurse *.js |% FullName |? { $_ -notmatch 'bower_components' }
+  foreach ($jsFile in $jsInputs) {
+    jshint.cmd $jsFile
     if ($LastExitCode -ne 0) { return }
   }
 
   Start-Process 'cmd.exe' '/c', 'http-server.cmd'
-  Start-Process 'http://localhost:8080/join/index.html'
+  Start-Process 'http://localhost:8080/index.html'
 }
 
 build
