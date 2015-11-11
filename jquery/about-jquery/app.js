@@ -1,6 +1,7 @@
 // About jQuery: http://learn.jquery.com/about-jquery/
 
 (function($) {
-  // Code goes here
-  
+
+    // Ready event
+    $(document).ready(function() { console.log('ready!'); });
 })($);
