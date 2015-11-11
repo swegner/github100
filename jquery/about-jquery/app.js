@@ -8,6 +8,8 @@
 
       $('a').click(function(event) {
         console.log(event);
+        $(event.target).addClass('test');
+        
         event.preventDefault();
       });
     });
