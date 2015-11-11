@@ -7,7 +7,8 @@
       console.log('ready!');
 
       $('a').click(function(event) {
-        alert('Clicked!');
+        console.log(event);
+        event.preventDefault();
       });
     });
 })($);
