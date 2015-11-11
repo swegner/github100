@@ -10,6 +10,12 @@ function build() {
     if ($LastExitCode -ne 0) { return }
   }
 
+  $cssInputs = dir -Recurse *.css |% FullName
+  foreach ($cssFile in $cssInputs) {
+    csslint.cmd $cssFile
+    if ($LastExitCode -ne 0) { return }
+  }
+
   Start-Process 'cmd.exe' '/c', 'http-server.cmd'
   Start-Process 'http://localhost:8080/index.html'
 }
